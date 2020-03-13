@@ -43,10 +43,7 @@ function loadWidget(waifuPath, apiPath) {
 			 return tagArr;
 		 }
 	}
-	function jumpToBaby(){
-		alert("你确定要跳转到神秘空间吗？");
-		window.location.href="https://tokyohost.github.io/loveBalloon/";
-	}
+	
 
 	function registerEventListener() {
 		document.querySelector("#waifu-tool .fa-comment").addEventListener("click", showHitokoto);
@@ -54,49 +51,20 @@ function loadWidget(waifuPath, apiPath) {
 		//判断是否是android 手机
 		
 		if(/Android|webOS|iPhone|iPod|BlackBerry|ios/i.test(navigator.userAgent)) {
-			var TempDate = new Date();
-			var day = TempDate.getDate();
-			var month = TempDate.getMonth()+1;
-			console.log("Date="+day + "Month = "+month);
-			if (day == 7 && month == 2){
-				
-				document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {	//跳转神秘空间
-					jumpToBaby();
-				});
-				
-				
-				}else{
-					document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click",() => {					//是安卓手机
-						showMessage("主人说这个功能没有适配好手机，所以不给你用哦~", 6000, 9);
-					});
-				}
-	    	
-		
-		} else{
-			var TempDate = new Date();
-			var day = TempDate.getDate();
-			var month = TempDate.getMonth()+1;
-			console.log("Date="+day + "Month = "+month);
-			
-			if (day == 7 && month == 2){
-				
-				document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {	//跳转神秘空间
-					jumpToBaby();
-				});
-				
-				
-				}else {
-		    		document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {	//飞机大战
-					if (window.Asteroids) {
-						if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
-						window.ASTEROIDSPLAYERS.push(new Asteroids());
-					} else {
-						var script = document.createElement("script");
-						script.src = "https://cdn.jsdelivr.net/gh/GalaxyMimi/CDN/asteroids.js";
-						document.head.appendChild(script);
-					}
-				});
+	    	document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click",() => {					//是安卓手机
+			showMessage("主人说这个功能没有适配好手机，所以不给你用哦~", 6000, 9);
+		});
+		} else {
+    		document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {	//飞机大战
+			if (window.Asteroids) {
+				if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
+				window.ASTEROIDSPLAYERS.push(new Asteroids());
+			} else {
+				var script = document.createElement("script");
+				script.src = "https://cdn.jsdelivr.net/gh/GalaxyMimi/CDN/asteroids.js";
+				document.head.appendChild(script);
 			}
+		});
 		}
 	
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
@@ -129,24 +97,6 @@ function loadWidget(waifuPath, apiPath) {
 		window.addEventListener("visibilitychange", () => {
 			if (!document.hidden) showMessage("哇，你终于回来了～", 6000, 9);
 		});
-
-		//注册返回按钮&保存图片监听
-		var back_to_index = document.querySelector("#back-to-index");
-		if(back_to_index){
-			back_to_index.addEventListener("mouseover",()=>{
-				showMessage("这里是返回到查询的主页面哦！",6000,9);
-			})
-		}
-
-		var saveimage = document.querySelector("#downloadscoreimg");
-		if(saveimage){
-			saveimage.addEventListener("mouseover",()=>{
-				showMessage("这是个测试功能！可以把你的成绩单保存下来~但是只能在电脑浏览器中完整保存哦~秋咪~",6000,9);
-			});
-			saveimage.addEventListener("click",()=>{
-				showMessage("正在生成完整图片~请稍等一会会~快来调戏我吧~~~",6000,9);
-			})
-		}
 		
 		//注册登陆页面监听
 		
@@ -273,13 +223,13 @@ function loadWidget(waifuPath, apiPath) {
 				var classnamelistener = classitem[i].querySelector(`#classname${classid}`);
 				classnamelistener.addEventListener("mouseover",(function setMouseOver(classname,chengji){
 								return function(){
-									showMessage(`<span>${classname}</span>  你的成绩是<span>${chengji}</span> 哟~`, 3000, 11);
+									showMessage(`你的成绩是<span>${chengji}</span> 哟~`, 3000, 11);
 								}
 							})(classname,chengji));
 				
 				classnamelistener.addEventListener("onclick",(function setMouseOver(classname,chengji){
 								return function(){
-									showMessage(`<span>${classname}</span>  你的成绩是<span>${chengji}</span> 哟~`, 3000, 11);
+									showMessage(`你的成绩是<span>${chengji}</span> 哟~`, 3000, 11);
 								}
 							})(classname,chengji));
 				//添加绩点的监听
@@ -383,13 +333,8 @@ function loadWidget(waifuPath, apiPath) {
 							})(paimin,paiminPnum));
 				
 			}
-			
-			
-			
 		}
-		
-		
-		
+
 	}
 	registerEventListener();
 	
@@ -398,13 +343,7 @@ function loadWidget(waifuPath, apiPath) {
 		document.getElementById("waifu").style.display = "none";
 		document.getElementById("waifu-toggle").classList.add("waifu-toggle-active");
 	}
-	
-	if(/Android|webOS|iPhone|iPod|BlackBerry|ios/i.test(navigator.userAgent)) {
-	    	//安卓手机默认关闭看板娘
-	    	closeDefault();
-			
-		};
-	
+	closeDefault();
 	function welcomeMessage() {
 		var text;
 		if (location.pathname === "/queryscore" || location.pathname === "/queryscore/") { // 如果是主页
@@ -435,7 +374,7 @@ function loadWidget(waifuPath, apiPath) {
 	var userAction = false,
 		userActionTimer = null,
 		messageTimer = null,
-		messageArray = ["好久不见，日子过得好快呢……", "大坏蛋！你都多久没理人家了呀，嘤嘤嘤～", "嗨～快来逗我玩吧！", "拿小拳拳锤你胸口！", "记得把人家加入 Adblock 白名单哦！"];
+		messageArray = ["好久不见，日子过得好快呢……", "大坏蛋！你都多久没理人家了呀，嘤嘤嘤～", "嗨～快来逗我玩吧！", "拿小拳拳锤你胸口！", "记得把小家加入 Adblock 白名单哦！"];
 	window.addEventListener("mousemove", () => userAction = true);
 	window.addEventListener("keydown", () => userAction = true);
 	setInterval(() => {
@@ -563,7 +502,7 @@ function loadWidget(waifuPath, apiPath) {
 function initWidget(waifuPath = "/waifu-tips.json", apiPath = "") {
 	if (screen.width <= 320) return;
 	document.body.insertAdjacentHTML("beforeend", `<div id="waifu-toggle">
-			<span>快放我出来~QAQ</span>
+			<span>快点我</span>
 		</div>`);
 	var toggle = document.getElementById("waifu-toggle");
 	toggle.addEventListener("click", () => {
@@ -588,19 +527,3 @@ function initWidget(waifuPath = "/waifu-tips.json", apiPath = "") {
 		loadWidget(waifuPath, apiPath);
 	}
 }
-
-function showcopy(){
-	 	if (window.console) {
-	 		
-			var cons = console;
-	    	if (cons) {
-				console.log("%c ", "background: url(httpS://chaxun.mzlblog.com/static/img/log.png) no-repeat center;padding-left:419px;padding-bottom: 112px;");
-				console.log("©2020 信息工程学院 MZLBLOG.com");
-		 
-	    	}
-			}
-	 		
-	 		
-    }
-
-showcopy();//加载版权

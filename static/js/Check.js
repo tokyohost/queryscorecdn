@@ -20,7 +20,7 @@
                 document.getElementById("login-button").setAttribute("disabled", true);
                 // document.getElementById("login-button").innerText="正在拼命查询中...请等待一小会儿哦*_*乖 <img src=\"/static/img/login2.gif\" width=\"25px\" height=\"25px\"> "
                 var Msg = "正在拼命查询中...请等待一小会儿哦*_*乖 "
-                document.getElementById("login-button").innerHTML= Msg + "<img src=\"/static/img/login2.gif\" width=\"25px\" height=\"25px\"> ";
+                document.getElementById("login-button").innerHTML= Msg + "<img src=\"https://cdn.jsdelivr.net/gh/tokyohost/queryscorecdn/static/img/login2.gif\" width=\"25px\" height=\"25px\"> ";
                 // document.getElementById("Loding").className = " lodingStyle";
                 // document.getElementById("Loding").setAttribute("class","lodingStyle");
                 }
@@ -93,32 +93,13 @@ $(function () {
  	
  }
  inVisibleButton();
- //function showcopy(){
-	//  	if (window.console) {
-	 		
-	//  		var re = /x/;
-	// 		var i = 0;
-	// 		console.log(re);
-			
-	// 		re.toString = function () {
-	// 			var cons = console;
-	//     		if (cons) {
-	// 				console.log("%c ", "background: url(httpS://chaxun.mzlblog.com/static/img/log.png) no-repeat center;padding-left:419px;padding-bottom: 112px;");
-	// 				console.log("©2020 信息工程学院 MZLBLOG.com");
-		 
-	//     		}
-	//     		return ;
-	// 		};
-	 		
-	 		
- //   }
- //}
+
   function showcopy(){
 	 	if (window.console) {
 	 		
 			var cons = console;
 	    	if (cons) {
-				console.log("%c ", "background: url(httpS://chaxun.mzlblog.com/static/img/log.png) no-repeat center;padding-left:419px;padding-bottom: 112px;");
+				console.log("%c ", "background: url(https://cdn.jsdelivr.net/gh/tokyohost/queryscorecdn/static/img/log.png) no-repeat center;padding-left:419px;padding-bottom: 112px;");
 				console.log("©2020 信息工程学院 MZLBLOG.com");
 		 
 	    	}
