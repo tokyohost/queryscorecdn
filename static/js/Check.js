@@ -107,6 +107,6 @@ $(function () {
 	 		
 	 		
     }
- 
+ showcopy();
  
  
