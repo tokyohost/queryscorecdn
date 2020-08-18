@@ -1,6 +1,6 @@
 // 注意：live2d_path 参数应使用绝对路径
 //github cdn 地址
-const live2d_path = "https://cdn.jsdelivr.net/gh/tokyohost/queryscorecdn@1.2.0/static/live2d/live2d-tokyohost/";
+const live2d_path = "https://cdn.jsdelivr.net/gh/tokyohost/queryscorecdn/static/live2d/live2d-tokyohost/";
 //const live2d_path = "https://cdn.jsdelivr.net/gh/tokyohost/";
 
 // 封装异步加载资源的方法
