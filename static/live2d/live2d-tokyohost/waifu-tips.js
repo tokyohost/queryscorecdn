@@ -319,8 +319,8 @@ function loadWidget(waifuPath, apiPath) {
 			if(!paiminPnumDiv){
 				return;
 			}
-			var paimin = paiminDiv.innerHTML;//排名位置
-			var paiminPnum = paiminPnumDiv.innerHTML.replace("第","").replace("名","");//排名人数
+			var paimin = paiminDiv.innerHTML.replace("第","").replace("名","");//排名位置
+			var paiminPnum = paiminPnumDiv.innerHTML;//排名人数
 			
 			var paiminTableTd = showpaiminTable.querySelectorAll("td");
 			var k;
