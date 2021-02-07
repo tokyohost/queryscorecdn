@@ -43,29 +43,61 @@ function loadWidget(waifuPath, apiPath) {
 			 return tagArr;
 		 }
 	}
-	
+	function jumpToBaby(){
+		alert("你确定要跳转到神秘空间吗？");
+		window.location.href="https://tokyohost.github.io/loveBalloon/";
+	}
+
 
 	function registerEventListener() {
 		document.querySelector("#waifu-tool .fa-comment").addEventListener("click", showHitokoto);
 		
-		//判断是否是android 手机
+			if(/Android|webOS|iPhone|iPod|BlackBerry|ios/i.test(navigator.userAgent)) {
+			var TempDate = new Date();
+			var day = TempDate.getDate();
+			var month = TempDate.getMonth()+1;
+			console.log("Date="+day + "Month = "+month);
+			if (day == 7 && month == 2){
+				
+				document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {	//跳转神秘空间
+					jumpToBaby();
+				});
+				
+				
+				}else{
+					document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click",() => {					//是安卓手机
+						showMessage("主人说这个功能没有适配好手机，所以不给你用哦~", 6000, 9);
+					});
+				}
+	    	
 		
-		if(/Android|webOS|iPhone|iPod|BlackBerry|ios/i.test(navigator.userAgent)) {
-	    	document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click",() => {					//是安卓手机
-			showMessage("主人说这个功能没有适配好手机，所以不给你用哦~", 6000, 9);
-		});
-		} else {
-    		document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {	//飞机大战
-			if (window.Asteroids) {
-				if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
-				window.ASTEROIDSPLAYERS.push(new Asteroids());
-			} else {
-				var script = document.createElement("script");
-				script.src = "https://cdn.jsdelivr.net/gh/GalaxyMimi/CDN/asteroids.js";
-				document.head.appendChild(script);
+		} else{
+			var TempDate = new Date();
+			var day = TempDate.getDate();
+			var month = TempDate.getMonth()+1;
+			// console.log("Date="+day + "Month = "+month);
+			
+			if (day == 7 && month == 2){
+				
+				document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {	//跳转神秘空间
+					jumpToBaby();
+				});
+				
+				
+				}else {
+		    		document.querySelector("#waifu-tool .fa-paper-plane").addEventListener("click", () => {	//飞机大战
+					if (window.Asteroids) {
+						if (!window.ASTEROIDSPLAYERS) window.ASTEROIDSPLAYERS = [];
+						window.ASTEROIDSPLAYERS.push(new Asteroids());
+					} else {
+						var script = document.createElement("script");
+						script.src = "https://cdn.jsdelivr.net/gh/GalaxyMimi/CDN/asteroids.js";
+						document.head.appendChild(script);
+					}
+				});
 			}
-		});
 		}
+	
 	
 		document.querySelector("#waifu-tool .fa-user-circle").addEventListener("click", loadOtherModel);
 		document.querySelector("#waifu-tool .fa-street-view").addEventListener("click", loadRandModel);
